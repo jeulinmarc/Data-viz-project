@@ -2,6 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import numpy as np
 
 import pandas as pd
 
@@ -26,7 +27,7 @@ def human_format(num):
         # Else value is a number
         if num < 1000000:
             return num
-        magnitude = int(math.log(num, 1000))
+        magnitude = int(np.log(num, 1000))
         mantissa = str(int(num / (1000 ** magnitude)))
         return mantissa + ["", "K", "M", "G", "T", "P"][magnitude]
     except:
