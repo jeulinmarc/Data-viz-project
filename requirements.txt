@@ -12,4 +12,3 @@ glob
 plotly.offline
 plotly.graph_objs
 plotly.io
-plotly
