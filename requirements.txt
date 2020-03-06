@@ -40,8 +40,6 @@ docutils==0.15.2
 eikon==1.0.1
 entrypoints==0.3
 esda==2.2.0
-ezdashboard==0.3.8
-ezhc==0.7.7
 face-recognition-models==0.3.0
 fake-useragent==0.1.11
 ffn==0.3.4
@@ -222,7 +220,6 @@ websocket-client==0.56.0
 websockets==8.1
 Werkzeug==0.16.0
 widgetsnbextension==3.5.1
-wordcloud==1.6.0
 wrapt==1.11.2
 wurlitzer==2.0.0
 xgboost==0.90
