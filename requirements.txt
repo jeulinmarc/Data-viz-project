@@ -7,7 +7,7 @@ numpy==1.17.4
 datetime
 pandas_datareader
 bs4
-os 
+os==18.7.0
 glob
 plotly.offline
 plotly.graph_objs
