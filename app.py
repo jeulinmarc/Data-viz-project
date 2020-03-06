@@ -8,7 +8,7 @@ from plotly.subplots import make_subplots
 
 import pandas as pd
 
-import code2
+from code2 import main as core_analysis
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
@@ -16,31 +16,17 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
 )
+
 server = app.server
 
 df = pd.read_csv('https://plotly.github.io/datasets/country_indicators.csv')
 
 
 
-tickers, liste_df, figure = code2.Main()
+tickers, liste_df, liste_returns, figure = core_analysis()
 
 available_indicators = df['Indicator Name'].unique()
 
-# Display big numbers in readable format
-def human_format(num):
-    try:
-        num = float(num)
-        # If value is 0
-        if num == 0:
-            return 0
-        # Else value is a number
-        if num < 1000000:
-            return num
-        magnitude = int(math.log(num, 1000))
-        mantissa = str(int(num / (1000 ** magnitude)))
-        return mantissa + ["", "K", "M", "G", "T", "P"][magnitude]
-    except:
-        return num
 
 # Returns Top cell bar for header area
 def get_top_bar_cell(cellTitle, cellValue):
@@ -49,7 +35,7 @@ def get_top_bar_cell(cellTitle, cellValue):
         children=[
             html.P(className="p-top-bar", children=cellTitle),
             html.P(id=cellTitle, className="display-none", children=cellValue),
-            html.P(children=human_format(cellValue)),
+            html.P(children=(cellValue)),
         ],
     )
 
@@ -122,23 +108,38 @@ app.layout = html.Div([
                         className="logo", src=app.get_asset_url("NEOMA_LOGOTYPE_RVB_F_V.png")
                     ),
                     html.H6(children="Trading Strategies Exploration"),
-                    html.P(
+                    html.P([
                         """
-                        This app represent different Trading 
-                        strategies and their respective 
-                        performances.
+                        This app introduces the results of 3 trading strategies for the 50 main cryptocurrencies quoted on Yahoo Finance. 
+                        You can select the cryptocurrency that you want to show with the button on the left,
+                        and the price in USD will be shown on the first graph while the bar chart will 
+                        introduce the profit for each strategy.
+                        """, html.Br(),"""
+                        """, html.Br(),"""
+                        The first strategy is based on a momentum indicator: RSI.
+                        The second one is based on a trend indicator: moving averages.
+                        The last one is based on a volatility indicator: bollinger bands. 
+                        """, html.Br(),"""
+                        Every profit is given in USD.
+                        """, html.Br(),"""
+                        """, html.Br(),"""
+                        Data frequency is daily.
+                        This frequency is not suitable for RSI and bollinger band strategies.
+                        The parameters must be adjusted to increase the number of trades and thus increase the returns.
+                        """, html.Br(),"""
+                        Past performance does not prejudge future performance.
                         """
-                        ),
+                        ]),
                     html.P(["""
                         ---------------------------------------
                         """, html.Br(),"""
-                        This work have been done by :
+                        This work has been done by:
                         """, html.Br(),"""
-                        - Julien Julius Julie
+                        - Julien Romano
                         """, html.Br(),"""
-                        - Sir Julian Van Lemen,
+                        - Marc Jeulin
                         """, html.Br(),"""
-                        - Marco-Julius Jeulinos \n
+                        - Nils Janvier
                         """
                            ]),
                      ],
@@ -147,32 +148,6 @@ app.layout = html.Div([
     html.Div(
         className="nine columns div-right-panel",
         children=[
-#             html.Div(
-#                 id="top_bar", className="row div-top-bar", children=get_top_bar()
-#             ),
-#             html.Div([
-#                 dcc.Dropdown(
-#                     id = "asset",
-#                     options = [{'label' : i, 'value' : i} for i in tickers],
-#                     value = 'BTC_USD'
-#                 )
-#             ],
-#             style = {'width' : '16%', 'display' : 'inline-block'}
-#             ),
-#             html.Div([
-#                 dcc.Dropdown(
-#                     id = "strategies",
-#                     options = [{'label' : i, 'value' : i} for i in strategies],
-#                     value = 'moving average'
-#                 )
-#             ],
-#             style = {'width' : '20%', 'display' : 'inline-block'}
-#             ),
-            html.Div(
-                id='update_date',
-                className='row div-top-bar',
-                children=get_top_bar()
-            ),
             html.Div(
                     id="charts",
                     className="row",
@@ -187,6 +162,11 @@ app.layout = html.Div([
                         )
                     ]
             ),
+            html.Div(
+                        id='update_date',
+                        className='row div-top-bar',
+                        children=get_top_bar()
+                        ),
         ]
     ),
     html.Div(id="orders", style={"display": "none"}),
