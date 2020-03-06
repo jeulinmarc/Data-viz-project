@@ -344,7 +344,7 @@ def main():
     
     data = Data()
     tickers = data.getSymbols()
-    size = 50
+    size = 10
     #On prend juste les 10 premiers pour le moment 
     df = data.getData(tickers[0])
     df = data.computeIndicators(df)
