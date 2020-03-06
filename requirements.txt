@@ -7,6 +7,6 @@ dash-core-components==0.5.0
 datetime
 pandas
 requests
-numpy as np
+numpy
 pandas_datareader
 bs4
