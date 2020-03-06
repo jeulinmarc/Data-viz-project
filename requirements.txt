@@ -91,8 +91,6 @@ matplotlib==3.1.1
 mccabe==0.6.1
 metakernel==0.24.3
 mistune==0.8.4
-mkl-random==1.1.0
-mkl-service==2.3.0
 more-itertools==7.2.0
 mpl-finance==0.10.0
 multi-key-dict==2.0.3
