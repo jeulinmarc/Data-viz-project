@@ -8,7 +8,6 @@ datetime
 pandas_datareader
 bs4
 os 
-pandas
 glob
 plotly.offline
 plotly.graph_objs
