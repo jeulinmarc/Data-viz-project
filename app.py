@@ -16,6 +16,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
 )
+server= app.server
 
 df = pd.read_csv('https://plotly.github.io/datasets/country_indicators.csv')
 
