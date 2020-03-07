@@ -17,8 +17,6 @@ app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
 )
 
-server = app.server
-
 df = pd.read_csv('https://plotly.github.io/datasets/country_indicators.csv')
 
 
@@ -48,7 +46,7 @@ def get_top_bar(
         #get_top_bar_cell("Sharpe", sharpe),
         #get_top_bar_cell("Return", returns),
         #get_top_bar_cell("Volatility", volatility),
-        get_top_bar_cell("Last Date", time_day)
+        get_top_bar_cell("Last Dashboard Update", time_day)
     ]
 
 assets = ['BTC','ETH','XRP']
@@ -110,7 +108,7 @@ app.layout = html.Div([
                     html.H6(children="Trading Strategies Exploration"),
                     html.P([
                         """
-                        This app introduces the results of 3 trading strategies for the 50 main cryptocurrencies quoted on Yahoo Finance. 
+                        This app introduces the results of 3 trading strategies for the 10 main cryptocurrencies quoted on Yahoo Finance. 
                         You can select the cryptocurrency that you want to show with the button on the left,
                         and the price in USD will be shown on the first graph while the bar chart will 
                         introduce the profit for each strategy.
@@ -128,6 +126,10 @@ app.layout = html.Div([
                         The parameters must be adjusted to increase the number of trades and thus increase the returns.
                         """, html.Br(),"""
                         Past performance does not prejudge future performance.
+                        """, html.Br(),"""
+                        """, html.Br(),"""
+                        The style (css) of this app can be found here: https://codepen.io/chriddyp/pen/bWLwgP.css
+                        This dashboard format as been inspired by the web-trader app on: https://dash-gallery.plotly.host/
                         """
                         ]),
                     html.P(["""
@@ -148,6 +150,27 @@ app.layout = html.Div([
     html.Div(
         className="nine columns div-right-panel",
         children=[
+#             html.Div(
+#                 id="top_bar", className="row div-top-bar", children=get_top_bar()
+#             ),
+#             html.Div([
+#                 dcc.Dropdown(
+#                     id = "asset",
+#                     options = [{'label' : i, 'value' : i} for i in tickers],
+#                     value = 'BTC_USD'
+#                 )
+#             ],
+#             style = {'width' : '16%', 'display' : 'inline-block'}
+#             ),
+#             html.Div([
+#                 dcc.Dropdown(
+#                     id = "strategies",
+#                     options = [{'label' : i, 'value' : i} for i in strategies],
+#                     value = 'moving average'
+#                 )
+#             ],
+#             style = {'width' : '20%', 'display' : 'inline-block'}
+#             ),
             html.Div(
                     id="charts",
                     className="row",
