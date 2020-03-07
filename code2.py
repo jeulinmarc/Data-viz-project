@@ -152,7 +152,7 @@ class Data:
             rows=2, cols=1,
             column_widths=[0.6],
             row_heights=[1, 0.3],
-            subplot_titles=("Prices", "Profit per strategy"),
+            subplot_titles=("Prices", "Profit in $ per strategy with an investment at asset price"),
             vertical_spacing = 0.3,
             specs=[[{"type": "scatter"}],
                    [{"type": "bar"}]])
