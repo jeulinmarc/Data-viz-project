@@ -3,7 +3,9 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 from datetime import datetime as dt
+from datetime import  timedelta
 from plotly.subplots import make_subplots
+
 
 
 import pandas as pd
@@ -41,7 +43,7 @@ def get_top_bar_cell(cellTitle, cellValue):
 
 # Returns HTML Top Bar for app layout
 def get_top_bar(
-    sharpe=3.432, returns=6577, volatility=32.112, time_day = str(dt.today())[:16]
+    sharpe=3.432, returns=6577, volatility=32.112, time_day = str(dt.today() + timedelta(hours=1))[:16]
 ):
     return [
         #get_top_bar_cell("Sharpe", sharpe),
