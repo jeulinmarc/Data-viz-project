@@ -1,4 +1,5 @@
 gunicorn>=19.7.1
+dash==1.13.3
 certifi==2019.11.28
 Flask==1.1.1
 numpy==1.18.1
