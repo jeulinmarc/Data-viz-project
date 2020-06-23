@@ -10,7 +10,7 @@ from plotly.subplots import make_subplots
 
 import pandas as pd
 
-from code2 import main as core_analysis
+from data_analysis import main as core_analysis
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
