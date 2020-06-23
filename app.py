@@ -105,9 +105,6 @@ app.layout = html.Div([
             html.Div(
                 className="div-info",
                 children=[
-                    html.Img(
-                        className="logo", src=app.get_asset_url("NEOMA_LOGOTYPE_RVB_F_V.png")
-                    ),
                     html.H6(children="Trading Strategies Exploration"),
                     html.P([
                         """
@@ -134,19 +131,7 @@ app.layout = html.Div([
                         The style (css) of this app can be found here: https://codepen.io/chriddyp/pen/bWLwgP.css
                         This dashboard format as been inspired by the web-trader app on: https://dash-gallery.plotly.host/
                         """
-                        ]),
-                    html.P(["""
-                        ---------------------------------------
-                        """, html.Br(),"""
-                        This work has been done by:
-                        """, html.Br(),"""
-                        - Julien Romano
-                        """, html.Br(),"""
-                        - Marc Jeulin
-                        """, html.Br(),"""
-                        - Nils Janvier
-                        """
-                           ]),
+                        ])
                      ],
                  )
         ]),
