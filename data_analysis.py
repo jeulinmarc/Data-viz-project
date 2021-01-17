@@ -305,7 +305,6 @@ class Data:
             df_temp = 0
             df_temp = df.loc[df[strategy].notnull()]
             df_temp.loc[:, 'traded_value'] = np.where(df_temp[strategy] == "buy", df_temp['Low'] * -1, df_temp['High'])
-            print(df_temp)
             add = df_temp.iloc[-1, df.columns.get_loc('Close')] if df_temp.iloc[-1, df.columns.get_loc(strategy)] == 'buy' else 0
             portfolio_val = df_temp["traded_value"].sum() + add
             strat_totals.append(portfolio_val)
